@@ -8,7 +8,7 @@ class App {
   constructor(controllers, port) {
     this.app = express();
     this.port = port;
-
+    
     this.initializeMiddlewares();
     this.initializeControllers(controllers);
   }
@@ -22,6 +22,7 @@ class App {
       this.app.use("/", controller.router);
     });
   }
+
 
   public listen() {
     this.app.listen(this.port, () => {
