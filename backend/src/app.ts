@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import * as bodyParser from "body-parser";
 
 class App {
@@ -8,13 +9,14 @@ class App {
   constructor(controllers, port) {
     this.app = express();
     this.port = port;
-    
+
     this.initializeMiddlewares();
     this.initializeControllers(controllers);
   }
 
   private initializeMiddlewares() {
     this.app.use(bodyParser.json());
+    this.app.use(cors);
   }
 
   private initializeControllers(controllers) {
@@ -22,7 +24,6 @@ class App {
       this.app.use("/", controller.router);
     });
   }
-
 
   public listen() {
     this.app.listen(this.port, () => {
