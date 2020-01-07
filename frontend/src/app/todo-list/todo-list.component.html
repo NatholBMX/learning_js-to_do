@@ -1,1 +1,13 @@
 <p>todo-list works!</p>
+<div class="row">
+  <app-todo-item
+    class="span4"
+    *ngFor="let todoItem of todoItems"
+    [todoItem]="todoItem"
+    (delete)="onTodoItemDelete($event)"
+  >
+  </app-todo-item>
+  <div class="btn-group">
+    <div class="btn"><i class=" icon-plus-sign"></i> Add new task</div>
+  </div>
+</div>

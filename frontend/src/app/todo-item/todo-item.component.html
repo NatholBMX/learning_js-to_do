@@ -1,1 +1,5 @@
-<p>todo-item works!</p>
+<p>Task name: {{ todoItem.name }}</p>
+<p>Task description: {{ todoItem.description }}</p>
+<div class="btn-group" (click)="onDelete()">
+  <div class="btn btn-success"><i class=" icon-ok"></i> Finish task</div>
+</div>

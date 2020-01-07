@@ -20,7 +20,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css", "src/assets/css/style.css"],
+            "styles": ["src/styles.css", "src/assets/css/bootstrap.css"],
             "scripts": ["src/assets/js/bootstrap.js"]
           },
           "configurations": {
@@ -56,6 +56,8 @@
           }
         },
         "serve": {
+          "host": "0.0.0.0",
+          "proxy-conf": "proxy.conf.json",
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "frontend:build"
