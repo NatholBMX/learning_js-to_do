@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TodoItemService } from "../todo-item/todo-item.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-todo-list",
@@ -8,7 +9,10 @@ import { TodoItemService } from "../todo-item/todo-item.service";
 })
 export class TodoListComponent implements OnInit {
   todoItems = [];
-  constructor(private todoItemService: TodoItemService) {}
+  constructor(
+    private todoItemService: TodoItemService,
+    public router: Router
+  ) {}
 
   ngOnInit() {
     this.getTodoItems();

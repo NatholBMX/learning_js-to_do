@@ -1,7 +1,23 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
+import { AddTodoComponent } from "./add-todo/add-todo.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: "",
+    redirectTo: "todos",
+    pathMatch: "full"
+  },
+  {
+    path: "todos",
+    component: AppComponent
+  },
+  {
+    path: "new",
+    component: AddTodoComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

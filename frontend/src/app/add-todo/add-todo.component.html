@@ -1,0 +1,52 @@
+<form class="form-horizontal" #todoForm="ngForm" (submit)="onSubmit(todoForm)">
+  <div class="control-group">
+    <label class="control-label" for="category">Category</label>
+    <div class="controls">
+      <input type="text" name="category" placeholder="Todo Category" ngModel />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input type="text" name="name" placeholder="Todo title" ngModel />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="description">Description</label>
+    <div class="controls">
+      <input
+        type="text"
+        name="description"
+        placeholder="Todo description"
+        ngModel
+      />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="assignee">Assignee</label>
+    <div class="controls">
+      <input type="text" name="assignee" placeholder="Assignee" ngModel />
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="priority">Priority</label>
+    <div class="btn-group">
+      <select class="btn dropdown-toggle">
+        <option *ngFor="let priorityItem of priorityItems" >
+            {{priorityItem.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Add new todo</button>
+    </div>
+  </div>
+</form>
+
+<div class="btn-group">
+  <button class="btn" (click)="onCancel($event)">
+    <i class=" icon-remove"></i> Cancel
+  </button>
+</div>

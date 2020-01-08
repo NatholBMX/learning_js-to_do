@@ -36,13 +36,13 @@ export class TodoItemService {
   }
 }
 
-enum TaskPriority {
+export enum TaskPriority {
   High = 1,
   Middle = 2,
   Low = 3
 }
 
-interface TodoElement {
+export interface TodoElement {
   category: string;
   name: string;
   description: string;
