@@ -1,46 +1,88 @@
-<form class="form-horizontal" #todoForm="ngForm" (submit)="onSubmit(todoForm)">
+<form
+  class="form-horizontal"
+  [formGroup]="todoItemForm"
+  (ngSubmit)="onSubmit()"
+  required
+>
   <div class="control-group">
     <label class="control-label" for="category">Category</label>
     <div class="controls">
-      <input type="text" name="category" placeholder="Todo Category" ngModel />
+      <input
+        formControlName="category"
+        type="text"
+        id="category"
+        placeholder="Todo Category"
+      />
+      <div *ngIf="form.category.touched && form.category.errors?.required">
+        <label class="text-error">Category is required</label>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="name">Name</label>
     <div class="controls">
-      <input type="text" name="name" placeholder="Todo title" ngModel />
+      <input
+        formControlName="name"
+        type="text"
+        id="name"
+        placeholder="Todo title"
+      />
+      <div *ngIf="form.name.touched && form.name.errors?.required">
+        <label class="text-error">Name is required</label>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="description">Description</label>
     <div class="controls">
-      <input
+      <textarea
+        formControlName="description"
         type="text"
-        name="description"
+        id="description"
         placeholder="Todo description"
-        ngModel
-      />
+      >
+      </textarea>
+      <div
+        *ngIf="form.description.touched && form.description.errors?.required"
+      >
+        <label class="text-error">Please enter a description</label>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="assignee">Assignee</label>
     <div class="controls">
-      <input type="text" name="assignee" placeholder="Assignee" ngModel />
+      <input
+        formControlName="assignee"
+        type="text"
+        id="assignee"
+        placeholder="Assignee"
+      />
     </div>
   </div>
   <div class="control-group">
     <label class="control-label" for="priority">Priority</label>
     <div class="btn-group">
-      <select class="btn dropdown-toggle">
-        <option *ngFor="let priorityItem of priorityItems" >
-            {{priorityItem.name}}
+      <select
+        formControlName="priority"
+        class="btn dropdown-toggle"
+        id="priority"
+      >
+        <option value="">Please choose a priority</option>
+        <option *ngFor="let priorityItem of priorityItems">
+          {{ priorityItem.name }}
         </option>
       </select>
+      <div *ngIf="form.priority.touched && form.priority.errors?.required">
+        <label class="text-error">Please choose a priority</label>
+      </div>
     </div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Add new todo</button>
+      <button type="submit" class="btn" [disabled]="todoItemForm.invalid">
+        Add new todo
+      </button>
     </div>
   </div>
 </form>

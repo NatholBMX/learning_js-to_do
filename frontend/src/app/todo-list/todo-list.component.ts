@@ -22,7 +22,6 @@ export class TodoListComponent implements OnInit {
     this.todoItemService.get().subscribe(todoItems => {
       this.todoItems = todoItems;
     });
-    console.log("This are the items: ", this.todoItems);
   }
 
   onTodoItemDelete(todoItem) {
