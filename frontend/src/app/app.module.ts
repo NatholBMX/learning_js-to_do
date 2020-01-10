@@ -8,7 +8,7 @@ import { AppComponent } from "./app.component";
 import { CategoryListComponent } from "./category-list/category-list.component";
 import { TodoListComponent } from "./todo-list/todo-list.component";
 import { TodoItemComponent } from "./todo-item/todo-item.component";
-import { TodoItemService } from "./todo-item/todo-item.service";
+import { TodoItemService } from "./services/todo-item.service";
 import { AddTodoComponent } from "./add-todo/add-todo.component";
 
 @NgModule({

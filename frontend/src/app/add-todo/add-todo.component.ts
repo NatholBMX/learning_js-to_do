@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { TaskPriority } from "../todo-item/todo-item.service";
+import { TaskPriority } from "../services/todo-item.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
-import { TodoElement, TodoItemService } from "../todo-item/todo-item.service";
+import { TodoElement, TodoItemService } from "../services/todo-item.service";
 
 @Component({
   selector: "app-add-todo",
