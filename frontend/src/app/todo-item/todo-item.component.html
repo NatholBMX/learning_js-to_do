@@ -1,5 +1,14 @@
-<p>Task name: {{ todoItem.name }}</p>
-<p>Task description: {{ todoItem.description }}</p>
-<div class="btn-group" (click)="onDelete()">
-  <div class="btn btn-success"><i class=" icon-ok"></i> Finish task</div>
+<div class="card">
+  <div class="card-content">
+    <p>Task name: {{ todoItem.name }}</p>
+    <p>Task description: {{ todoItem.description }}</p>
+  </div>
+
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+        <div class="button" (click)="onDelete()">Finish task</div>
+      </span>
+    </p>
+  </footer>
 </div>

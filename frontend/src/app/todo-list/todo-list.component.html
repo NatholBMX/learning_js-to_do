@@ -1,15 +1,15 @@
-<div class="row">
+<div class="columns is-multiline">
   <app-todo-item
-    class="span4"
+    class="column is-one-quarter"
     *ngFor="let todoItem of todoItems"
     [todoItem]="todoItem"
     (delete)="onTodoItemDelete($event)"
   >
   </app-todo-item>
-  <div class="btn-group" [routerLink]="['/new']">
-    <div class="btn"><i class=" icon-plus-sign"></i> Add new task</div>
-    <div *ngIf="router.url === '/new'">
-      <app-add-todo></app-add-todo>
-    </div>
+</div>
+<div class="buttons" [routerLink]="['/new']">
+  <div class="button is-info"><i class=" icon-plus-sign"></i> Add new task</div>
+  <div *ngIf="router.url === '/new'">
+    <app-add-todo></app-add-todo>
   </div>
 </div>

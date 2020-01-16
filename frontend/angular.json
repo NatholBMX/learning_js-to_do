@@ -20,8 +20,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css", "src/assets/css/bootstrap.css"],
-            "scripts": ["src/assets/js/bootstrap.js"]
+            "styles": ["./node_modules/bulma/css/bulma.css"],
+            "scripts": []
           },
           "configurations": {
             "production": {

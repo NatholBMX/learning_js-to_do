@@ -1,11 +1,13 @@
-<ul class="nav nav-tabs">
-  <li><a href="#">Home</a></li>
-  <li class="divider"></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-</ul>
-
-<section>
-  <app-todo-list>
-  </app-todo-list>
-</section>
+<div class="container is-fluid">
+  <nav class="navbar">
+    <div class="navbar-menu">
+      <a class="navbar-item" href="#">Home</a>
+      <a class="navbar-item" href="#" *ngFor="let category of categoryList">
+        {{ category }}
+      </a>
+    </div>
+  </nav>
+  <section>
+    <app-todo-list> </app-todo-list>
+  </section>
+</div>
