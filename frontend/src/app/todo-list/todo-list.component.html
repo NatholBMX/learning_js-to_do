@@ -7,9 +7,12 @@
   >
   </app-todo-item>
 </div>
-<div class="buttons" [routerLink]="['/new']">
-  <div class="button is-info"><i class=" icon-plus-sign"></i> Add new task</div>
-  <div *ngIf="router.url === '/new'">
-    <app-add-todo></app-add-todo>
+<div class="buttons">
+  <div class="button is-info" (click)="setAddTodoState($event)">
+    <i class=" icon-plus-sign"></i> Add new task
   </div>
+  <app-add-todo
+    *ngIf="addTodoShown"
+    (cancelEvent)="setAddTodoState($event)"
+  ></app-add-todo>
 </div>

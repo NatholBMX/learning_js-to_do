@@ -9,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class TodoListComponent implements OnInit {
   todoItems = [];
+  addTodoShown = false;
   constructor(
     private todoItemService: TodoItemService,
     public router: Router
@@ -28,5 +29,15 @@ export class TodoListComponent implements OnInit {
     this.todoItemService.delete(todoItem).subscribe(() => {
       this.getTodoItems();
     });
+  }
+
+  onTodoItemUpdate(todoItem) {
+    this.todoItemService.update(todoItem).subscribe(() => {
+      this.getTodoItems();
+    });
+  }
+
+  setAddTodoState(event) {
+    this.addTodoShown = event;
   }
 }

@@ -1,7 +1,11 @@
-import { Component, OnInit } from "@angular/core";
-import { Location } from "@angular/common";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { TaskPriority } from "../services/todo-item.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  faArrowUp,
+  faArrowRight,
+  faArrowDown
+} from "@fortawesome/free-solid-svg-icons";
 
 import { TodoElement, TodoItemService } from "../services/todo-item.service";
 
@@ -11,11 +15,18 @@ import { TodoElement, TodoItemService } from "../services/todo-item.service";
   styleUrls: ["./add-todo.component.css"]
 })
 export class AddTodoComponent implements OnInit {
+  @Input() hidden: boolean;
+  @Output() cancelEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
   priorityItems: { id: number; name: string }[] = [];
   todoItemForm: FormGroup;
+  categoryItems = ["Personal", "Professional", "Finance"];
+
+  faArroWUp = faArrowUp;
+  faArrowRight = faArrowRight;
+  faArrowDown = faArrowDown;
+
 
   constructor(
-    private location: Location,
     private todoItemService: TodoItemService,
     private formBuilder: FormBuilder
   ) {
@@ -35,7 +46,8 @@ export class AddTodoComponent implements OnInit {
   }
 
   onCancel() {
-    this.location.back();
+    this.cancelEvent.emit(false);
+    this.hidden = true;
     this.todoItemForm.reset();
   }
 
@@ -55,16 +67,16 @@ export class AddTodoComponent implements OnInit {
       name: this.todoItemForm.get("name").value,
       description: this.todoItemForm.get("description").value,
       assignee: this.todoItemForm.get("assignee").value,
-      priority: this.todoItemForm.get("category").value,
+      priority: this.todoItemForm.get("priority").value,
       isFinished: false,
       id: 0
     };
 
     this.todoItemService.add(todoItem).subscribe(response => {
       this.onCancel();
-      this.todoItemService.get();
       window.location.reload();
     });
+    console.log("Submitted successfully.");
   }
 
   get form() {

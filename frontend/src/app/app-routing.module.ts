@@ -11,12 +11,9 @@ const routes: Routes = [
   },
   {
     path: "todos",
-    component: AppComponent
+    component: AppComponent,
   },
-  {
-    path: "new",
-    component: AddTodoComponent
-  }
+
 ];
 
 @NgModule({

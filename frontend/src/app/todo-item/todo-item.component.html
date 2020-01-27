@@ -1,13 +1,51 @@
 <div class="card">
+  <div class="card-header">
+    <p class="card-header-title">{{ todoItem.name }}</p>
+  </div>
   <div class="card-content">
-    <p>Task name: {{ todoItem.name }}</p>
-    <p>Task description: {{ todoItem.description }}</p>
+    <p class="title is-4">{{ todoItem.description }}</p>
+    <p>Assignee: {{ todoItem.assignee }}</p>
+    <div class="level" [ngSwitch]="todoItem.priority">
+      <span class="level-left" *ngSwitchCase="'High'">
+        <div class="level-item">
+          <fa-icon class="icon has-text-danger" [icon]="faArroWUp"></fa-icon>
+          <p class="media-left">High</p>
+        </div>
+      </span>
+
+      <span class="level-left" *ngSwitchCase="'Medium'">
+        <div class="level-item">
+          <fa-icon
+            class="icon has-text-warning"
+            [icon]="faArrowRight"
+          ></fa-icon>
+          <p class="media-left">Medium</p>
+        </div>
+      </span>
+
+      <span class="level-left" *ngSwitchCase="'Low'">
+        <div class="level-item">
+          <fa-icon class="icon has-text-success" [icon]="faArrowDown"></fa-icon>
+          <p class="media-left">Low</p>
+        </div>
+      </span>
+      
+    </div>
+
+    <span class="icon">
+      <fa-icon [icon]="faHome"></fa-icon>
+    </span>
   </div>
 
   <footer class="card-footer">
     <p class="card-footer-item">
       <span>
         <div class="button" (click)="onDelete()">Finish task</div>
+      </span>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        <div class="button" (click)="onUpdate()">Update task</div>
       </span>
     </p>
   </footer>
