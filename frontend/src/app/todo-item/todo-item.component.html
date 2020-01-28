@@ -1,9 +1,9 @@
-<div [class.is-finished]="todoItem.isFinished">
-  <div class="card" [class.has-background-grey-lighter]="todoItem.isFinished">
+<div class="card" [class.has-background-grey-lighter]="todoItem.isFinished">
+  <div [class.is-finished]="todoItem.isFinished">
     <div class="card-header">
       <p class="card-header-title">{{ todoItem.name }}</p>
       <span title="Delete task">
-        <div class="button is-white" (click)="onDelete()">
+        <div class="button is-white" [class.has-background-grey-lighter]="todoItem.isFinished" (click)="onDelete()">
           <fa-icon
             class="icon is-medium has-text-danger"
             [icon]="faTrashAlt"
@@ -44,18 +44,29 @@
         </span>
       </div>
     </div>
-
-    <footer class="card-footer">
-      <p class="card-footer-item">
-        <span>
-          <button class="button is-success" [disabled]="todoItem.isFinished" (click)="onFinish()">Finish task</button>
-        </span>
-      </p>
-      <p class="card-footer-item">
-        <span>
-          <div class="button is-warning" (click)="onUpdate()">Update task</div>
-        </span>
-      </p>
-    </footer>
   </div>
+
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <button
+        class="button is-success"
+        [disabled]="todoItem.isFinished"
+        (click)="onFinish()"
+      >
+        <span class="icon">
+          <fa-icon [icon]="faCheckCircle"></fa-icon>
+        </span>
+        <p>Finish task</p>
+      </button>
+    </p>
+
+    <p class="card-footer-item">
+      <button class="button is-warning" (click)="onUpdate()">
+        <span class="icon">
+          <fa-icon [icon]="faPen"></fa-icon>
+        </span>
+        <p>Update task</p>
+      </button>
+    </p>
+  </footer>
 </div>
