@@ -1,105 +1,130 @@
-<form
-  class="field is-vertical"
-  [formGroup]="todoItemForm"
-  (ngSubmit)="onSubmit()"
-  required
->
-  <div class="control">
-    <label class="label" for="category">Category</label>
-    <div class="select">
-      <select formControlName="category" id="category">
-        <option value="">Please choose a category</option>
-        <option *ngFor="let categoryItem of categoryItems">
-          {{ categoryItem }}
-        </option>
-      </select>
-    </div>
-    <div *ngIf="form.category.touched && form.category.errors?.required">
-      <label class="help is-danger">Please choose a priority</label>
-    </div>
-  </div>
-
-  <div class="control">
-    <label class="label" for="name">Name</label>
-    <div class="controls">
-      <input
-        class="input"
-        maxlength="30"
-        formControlName="name"
-        type="text"
-        id="name"
-        placeholder="Todo title"
-      />
-      <div *ngIf="form.name.touched && form.name.errors?.required">
-        <label class="help is-danger">Name is required</label>
-      </div>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="label" for="description">Description</label>
-    <div class="controls">
-      <textarea
-        class="textarea"
-        maxlength="250"
-        formControlName="description"
-        type="text"
-        id="description"
-        placeholder="Todo description"
-      >
-      </textarea>
-      <div
-        *ngIf="form.description.touched && form.description.errors?.required"
-      >
-        <label class="help is-danger">Please enter a description</label>
-      </div>
-    </div>
-  </div>
-  <div class="control-group">
-    <label class="label" for="assignee">Assignee</label>
-    <div class="controls">
-      <input
-        class="input"
-        maxlength="30"
-        formControlName="assignee"
-        type="text"
-        id="assignee"
-        placeholder="Assignee"
-      />
-    </div>
-  </div>
-  <div class="field">
-    <div class="control">
-      <label class="label" for="priority">Priority</label>
-      <div class="select" style="font-family: FontAwesome;">
-        <select
-          formControlName="priority"
-          class="btn dropdown-toggle"
-          id="priority"
+<div class="modal is-active is-clipped">
+  <div class="modal-background" (click)="onCancel($event)"></div>
+  <div class="modal-content">
+    <div class="modal-card">
+      <div class="modal-card-body">
+        <form
+          class="field is-vertical"
+          [formGroup]="todoItemForm"
+          (ngSubmit)="onSubmit()"
+          required
         >
-          <option value="">Please choose a priority</option>
-          <option *ngFor="let priorityItem of priorityItems">
-            {{ priorityItem.name }}
-          </option>
-        </select>
-      </div>
-      <div *ngIf="form.priority.touched && form.priority.errors?.required">
-        <label class="help is-danger">Please choose a priority</label>
-      </div>
-    </div>
-  </div>
+          <div class="control">
+            <label class="label" for="category">Category</label>
+            <div class="select">
+              <select formControlName="category" id="category">
+                <option value="">Please choose a category</option>
+                <option *ngFor="let categoryItem of categoryItems">
+                  {{ categoryItem }}
+                </option>
+              </select>
+            </div>
+            <div
+              *ngIf="form.category.touched && form.category.errors?.required"
+            >
+              <label class="help is-danger">Please choose a priority</label>
+            </div>
+          </div>
 
-  <div class="field is-grouped">
-    <div class="control">
-      <button
-        type="submit"
-        class="button is-primary"
-        [disabled]="todoItemForm.invalid"
-      >
-        Add new todo
-      </button>
+          <div class="control">
+            <label class="label" for="name">Name</label>
+            <div class="controls">
+              <input
+                class="input"
+                maxlength="30"
+                formControlName="name"
+                type="text"
+                id="name"
+                placeholder="Todo title"
+              />
+              <div *ngIf="form.name.touched && form.name.errors?.required">
+                <label class="help is-danger">Name is required</label>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="label" for="description">Description</label>
+            <div class="controls">
+              <textarea
+                class="textarea"
+                maxlength="250"
+                formControlName="description"
+                type="text"
+                id="description"
+                placeholder="Todo description"
+              >
+              </textarea>
+              <div
+                *ngIf="
+                  form.description.touched && form.description.errors?.required
+                "
+              >
+                <label class="help is-danger">Please enter a description</label>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="label" for="assignee">Assignee</label>
+            <div class="controls">
+              <input
+                class="input"
+                maxlength="30"
+                formControlName="assignee"
+                type="text"
+                id="assignee"
+                placeholder="Assignee"
+              />
+            </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <label class="label" for="priority">Priority</label>
+              <div class="select" style="font-family: FontAwesome;">
+                <select
+                  formControlName="priority"
+                  class="btn dropdown-toggle"
+                  id="priority"
+                >
+                  <option value="">Please choose a priority</option>
+                  <option *ngFor="let priorityItem of priorityItems">
+                    {{ priorityItem.name }}
+                  </option>
+                </select>
+              </div>
+              <div
+                *ngIf="form.priority.touched && form.priority.errors?.required"
+              >
+                <label class="help is-danger">Please choose a priority</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field is-grouped">
+            <div class="control">
+              <button
+                type="submit"
+                class="button is-primary"
+                [disabled]="todoItemForm.invalid"
+              >
+                Add new todo
+              </button>
+            </div>
+            <button
+              class="button is-light"
+              type="button"
+              (click)="onCancel($event)"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
-    <button class="button is-light" type="button" (click)="onCancel($event)">
-      Cancel
-    </button>
+
+    <button
+      class="modal-close is-large"
+      (click)="onCancel($event)"
+      aria-label="close"
+    ></button>
   </div>
-</form>
+</div>
