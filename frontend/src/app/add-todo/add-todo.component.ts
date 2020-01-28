@@ -70,7 +70,7 @@ export class AddTodoComponent implements OnInit {
 
   private buildForm() {
     this.todoItemForm = this.formBuilder.group({
-      category: this.formBuilder.control(this.formValues.name, [
+      category: this.formBuilder.control(this.formValues.category, [
         Validators.required
       ]),
       name: this.formBuilder.control(this.formValues.name, [

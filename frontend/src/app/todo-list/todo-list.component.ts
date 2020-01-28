@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { TodoItemService } from "../services/todo-item.service";
+import { TodoItemService, TaskPriority } from "../services/todo-item.service";
 import { Router } from "@angular/router";
-import { AddTodoComponent } from "app/add-todo/add-todo.component";
 
 @Component({
   selector: "app-todo-list",

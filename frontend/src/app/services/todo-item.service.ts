@@ -12,9 +12,14 @@ export class TodoItemService {
 
   get() {
     return this.http.get<TodoElement[]>(this.baseUrl + "/all").pipe(
-      map(response => {
-        return response;
-      }),
+      map(response =>
+        response.sort((a, b) => {
+          if (a.isFinished === b.isFinished) {
+            return TaskPriority[a.priority] > TaskPriority[b.priority] ? 1 : -1;
+          }
+          return a.isFinished > b.isFinished ? 1 : -1;
+        })
+      ),
       catchError(this.handleError)
     );
   }
