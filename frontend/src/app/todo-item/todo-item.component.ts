@@ -3,7 +3,9 @@ import {
   faArrowUp,
   faArrowRight,
   faArrowDown,
-  faTrashAlt
+  faTrashAlt,
+  faCheckCircle,
+  faPen
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -21,6 +23,8 @@ export class TodoItemComponent {
   faArrowRight = faArrowRight;
   faArrowDown = faArrowDown;
   faTrashAlt = faTrashAlt;
+  faCheckCircle = faCheckCircle;
+  faPen = faPen;
 
   onDelete() {
     this.delete.emit(this.todoItem);

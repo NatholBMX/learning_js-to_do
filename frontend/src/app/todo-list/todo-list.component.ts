@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TodoItemService, TaskPriority } from "../services/todo-item.service";
 import { Router } from "@angular/router";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-todo-list",
@@ -10,6 +11,9 @@ import { Router } from "@angular/router";
 export class TodoListComponent implements OnInit {
   todoItems = [];
   addTodoShown = false;
+
+  faPlus = faPlus;
+  
   constructor(
     private todoItemService: TodoItemService,
     public router: Router

@@ -10,9 +10,10 @@
   </app-todo-item>
 </div>
 <div class="buttons">
-  <div class="button is-info" (click)="setAddTodoState($event)">
-    <i class=" icon-plus-sign"></i> Add new task
-  </div>
+  <button class="button is-info" (click)="setAddTodoState($event)">
+    <span class="icon"><fa-icon [icon]="faPlus"></fa-icon></span>
+    <p>Add new task</p>
+  </button>
   <app-add-todo
     *ngIf="addTodoShown"
     (cancelEvent)="setAddTodoState($event)"
