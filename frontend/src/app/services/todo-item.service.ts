@@ -6,6 +6,7 @@ import { map, catchError } from "rxjs/operators";
 @Injectable()
 export class TodoItemService {
   baseUrl = "http://127.0.0.1:5000/todos";
+  todoItem: TodoElement;
 
   constructor(private http: HttpClient) {}
 
@@ -33,6 +34,14 @@ export class TodoItemService {
   private handleError(error: HttpErrorResponse) {
     console.log(error.message);
     return throwError("A data error occurred.");
+  }
+
+  setTodoItem(todoItem) {
+    this.todoItem = todoItem;
+  }
+
+  getTodoItem() {
+    return this.todoItem;
   }
 }
 

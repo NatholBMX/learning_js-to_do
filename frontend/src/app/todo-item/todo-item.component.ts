@@ -2,7 +2,8 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 import {
   faArrowUp,
   faArrowRight,
-  faArrowDown
+  faArrowDown,
+  faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -14,14 +15,23 @@ export class TodoItemComponent {
   @Input() todoItem;
   @Output() delete = new EventEmitter();
   @Output() update = new EventEmitter();
+  @Output() finish = new EventEmitter();
 
   faArroWUp = faArrowUp;
   faArrowRight = faArrowRight;
   faArrowDown = faArrowDown;
+  faTrashAlt = faTrashAlt;
 
   onDelete() {
     this.delete.emit(this.todoItem);
   }
 
-  onUpdate() {}
+  onUpdate() {
+    this.update.emit(this.todoItem);
+  }
+
+  onFinish() {
+    this.todoItem.isFinished = true;
+    this.finish.emit(this.todoItem);
+  }
 }

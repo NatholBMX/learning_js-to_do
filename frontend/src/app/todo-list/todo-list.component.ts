@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { TodoItemService } from "../services/todo-item.service";
 import { Router } from "@angular/router";
+import { AddTodoComponent } from "app/add-todo/add-todo.component";
 
 @Component({
   selector: "app-todo-list",
@@ -32,12 +33,18 @@ export class TodoListComponent implements OnInit {
   }
 
   onTodoItemUpdate(todoItem) {
-    this.todoItemService.update(todoItem).subscribe(() => {
-      this.getTodoItems();
+    this.addTodoShown = true;
+    this.todoItemService.setTodoItem(todoItem);
+  }
+
+  onTodoItemFinish(todoItem) {
+    console.log(todoItem);
+    this.todoItemService.update(todoItem).subscribe(respone => {
+      window.location.reload();
     });
   }
 
-  setAddTodoState(event) {
+  setAddTodoState(event: boolean) {
     this.addTodoShown = event;
   }
 }

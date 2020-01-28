@@ -4,6 +4,8 @@
     *ngFor="let todoItem of todoItems"
     [todoItem]="todoItem"
     (delete)="onTodoItemDelete($event)"
+    (update)="onTodoItemUpdate($event)"
+    (finish)="onTodoItemFinish($event)"
   >
   </app-todo-item>
 </div>
