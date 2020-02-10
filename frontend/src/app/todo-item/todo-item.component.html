@@ -3,7 +3,11 @@
     <div class="card-header">
       <p class="card-header-title">{{ todoItem.name }}</p>
       <span title="Delete task">
-        <div class="button is-white" [class.has-background-grey-lighter]="todoItem.isFinished" (click)="onDelete()">
+        <div
+          class="button is-white"
+          [class.has-background-grey-lighter]="todoItem.isFinished"
+          (click)="onDelete()"
+        >
           <fa-icon
             class="icon is-medium has-text-danger"
             [icon]="faTrashAlt"

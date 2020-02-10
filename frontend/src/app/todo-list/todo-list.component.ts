@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { TodoItemService, TaskPriority } from "../services/todo-item.service";
+import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { TodoItemService, TodoElement } from "../services/todo-item.service";
 import { Router } from "@angular/router";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -8,25 +8,40 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
   templateUrl: "./todo-list.component.html",
   styleUrls: ["./todo-list.component.css"]
 })
-export class TodoListComponent implements OnInit {
+export class TodoListComponent implements OnInit, OnChanges {
+  @Input() filterValue;
   todoItems = [];
   addTodoShown = false;
 
   faPlus = faPlus;
-  
+
   constructor(
     private todoItemService: TodoItemService,
     public router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngOnChanges() {
     this.getTodoItems();
   }
 
   getTodoItems() {
     this.todoItemService.get().subscribe(todoItems => {
       this.todoItems = todoItems;
+      if (this.filterValue === "Home") {
+        this.filterValue = null;
+      }
+      if (this.filterValue) {
+        this.filterTodoItems();
+      }
     });
+  }
+
+  filterTodoItems() {
+    this.todoItems = this.todoItems.filter(
+      (todo: TodoElement) => todo.category === this.filterValue
+    );
   }
 
   onTodoItemDelete(todoItem) {

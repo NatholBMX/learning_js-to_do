@@ -8,6 +8,8 @@ import { TodoItemService } from "../services/todo-item.service";
 })
 export class CategoryListComponent implements OnInit {
   categoryList = [];
+  activeCategory = "Home";
+
   constructor(private todoItemService: TodoItemService) {
     this.getCategories();
   }
@@ -16,7 +18,13 @@ export class CategoryListComponent implements OnInit {
 
   getCategories() {
     this.todoItemService.get().subscribe(todoItems => {
-      this.categoryList = [...new Set(todoItems.map(item => item.category))];
+      const categoryList = [...new Set(todoItems.map(item => item.category))];
+      this.categoryList = ["Home"].concat(categoryList);
     });
+  }
+
+  onCategory(event) {
+    this.activeCategory = event.target.innerText;
+    console.log(this.activeCategory);
   }
 }

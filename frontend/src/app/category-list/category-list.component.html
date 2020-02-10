@@ -1,13 +1,20 @@
 <div class="container is-fluid">
   <nav class="navbar has-shadow is-spaced">
-    <div class="navbar-menu">
-      <a class="navbar-item" href="#">Home</a>
-      <a class="navbar-item" href="#" *ngFor="let category of categoryList">
-        {{ category }}
-      </a>
+    <div class="tabs is-toggle is-medium">
+      <ul>
+        <li
+          *ngFor="let category of categoryList"
+          [class.is-active]="activeCategory === category"
+        >
+          <a (click)="onCategory($event)">
+            {{ category }}
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
+
   <section>
-    <app-todo-list> </app-todo-list>
+    <app-todo-list [filterValue]="(activeCategory)"> </app-todo-list>
   </section>
 </div>
