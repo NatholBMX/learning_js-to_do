@@ -103,13 +103,11 @@ export class AddTodoComponent implements OnInit {
     if (!this.isUpdate) {
       this.todoItemService.add(todoItem).subscribe(response => {
         this.onCancel();
-        window.location.reload();
       });
       console.log("Submitted successfully.");
     } else {
       this.todoItemService.update(todoItem).subscribe(respone => {
         this.onCancel();
-        window.location.reload();
       });
       console.log("Updated successfully.");
     }

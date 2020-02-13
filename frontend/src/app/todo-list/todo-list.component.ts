@@ -58,11 +58,12 @@ export class TodoListComponent implements OnInit, OnChanges {
   onTodoItemFinish(todoItem) {
     console.log(todoItem);
     this.todoItemService.update(todoItem).subscribe(respone => {
-      window.location.reload();
+      this.getTodoItems();
     });
   }
 
   setAddTodoState(event: boolean) {
     this.addTodoShown = event;
+    this.getTodoItems();
   }
 }
